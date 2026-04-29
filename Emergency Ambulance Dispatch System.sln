@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.37216.2 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Emergency Ambulance Dispatch System", "Emergency Ambulance Dispatch System\Emergency Ambulance Dispatch System.csproj", "{B74106D3-DC2C-4380-BA55-C9BF8DB2D261}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B74106D3-DC2C-4380-BA55-C9BF8DB2D261}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B74106D3-DC2C-4380-BA55-C9BF8DB2D261}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B74106D3-DC2C-4380-BA55-C9BF8DB2D261}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B74106D3-DC2C-4380-BA55-C9BF8DB2D261}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A0EC441E-AE4B-459B-AE09-267E22DF5E5E}
+	EndGlobalSection
+EndGlobal
