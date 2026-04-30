@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Emergency_Ambulance_Dispatch_System.Core_Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,12 @@ using System.Threading.Tasks;
 
 namespace Emergency_Ambulance_Dispatch_System.Enum
 {
-    internal class EmergencyStatus
+    public enum EmergencyStatus
     {
+        Created,
+        Assigned,
+        OnRoute,
+        Completed
+        
     }
 }
