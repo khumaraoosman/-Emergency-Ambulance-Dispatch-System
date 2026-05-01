@@ -12,7 +12,7 @@ namespace Emergency_Ambulance_Dispatch_System.Core_Models
         public string CaseNo { get; }
         public Patient Patient { get; set; }
         public Ambulance? AssignedAmbulance { get; set; }
-        public EmergencyStatus Status { get; internal set; }
+        public EmergencyStatus Status { get; set; }
         public Priority Priority { get; private set; }
         public EmergencyCase(Patient patient, Priority priority) 
         {

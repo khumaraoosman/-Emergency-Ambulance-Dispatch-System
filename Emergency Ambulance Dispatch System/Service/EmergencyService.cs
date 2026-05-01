@@ -12,8 +12,8 @@ namespace Emergency_Ambulance_Dispatch_System.Service
 {
     internal class EmergencyService
     {
-        List<EmergencyCase> cases = new List<EmergencyCase>();
-        List<Ambulance> ambulance = new List<Ambulance>();
+        static List<EmergencyCase> cases = new List<EmergencyCase>();
+        static List<Ambulance> ambulance = new List<Ambulance>();
         public void CreateEmergencyCase(Patient patient, Priority priority)
         {
             EmergencyCase newCase = new EmergencyCase(patient, priority);
@@ -25,25 +25,22 @@ namespace Emergency_Ambulance_Dispatch_System.Service
             {
                 throw new ArgumentException("Case number cannot be null or empty.", nameof(caseNo));
             }
+            var emergencyCase = cases.FirstOrDefault(x => x.CaseNo == caseNo);
+            if (emergencyCase == null)
+            {
+                Console.WriteLine("Case tapilmadi");
+                return;
+            }
             var ambulance = GetAvailableAmbulances().FirstOrDefault();
             if (ambulance == null)
             {
                 Console.WriteLine("Hal-hazirda movcud ambulans yoxdur");
                 return;
-            }
-                var emergencyCase = cases.FirstOrDefault(x => x.CaseNo == caseNo);
-                if (emergencyCase != null)
-                {
-
-                    emergencyCase.AssignedAmbulance = ambulance;
-                    emergencyCase.Status = Enum.EmergencyStatus.Assigned;
-                    Console.WriteLine(" Ambulans teyin olundu");
-                    ambulance.IsAvailable = false;
-                }
-                else
-                {
-                    Console.WriteLine("Case tapilmadi");
-                }
+            }       
+            emergencyCase.AssignedAmbulance = ambulance;
+            emergencyCase.Status = Enum.EmergencyStatus.Assigned;
+            Console.WriteLine(" Ambulans teyin olundu");
+            ambulance.IsAvailable = false;
         }
         public void StartDispatch(string caseNo)
         {
