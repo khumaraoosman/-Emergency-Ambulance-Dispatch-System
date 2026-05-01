@@ -10,9 +10,9 @@ namespace Emergency_Ambulance_Dispatch_System.Core_Models
     {
         private static int _id = 1;
         public int Id { get; }
-        public string PlateNumber { get; private set; }
-        public string DriverName { get; private set; }
-        public bool IsAvailable { get; private set; }
+        public string PlateNumber { get;set; }
+        public string DriverName { get; set; }
+        public bool IsAvailable { get; set; }
 
         public Ambulance(string plateNumber, string driverName, bool isavailable)
         {

@@ -11,8 +11,8 @@ namespace Emergency_Ambulance_Dispatch_System.Core_Models
     {
         public string CaseNo { get; }
         public Patient Patient { get; set; }
-        public Ambulance? AssignedAmbulance { get; private set; }
-        public EmergencyStatus Status { get; private set; }
+        public Ambulance? AssignedAmbulance { get; set; }
+        public EmergencyStatus Status { get; internal set; }
         public Priority Priority { get; private set; }
         public EmergencyCase(Patient patient, Priority priority) 
         {
@@ -20,6 +20,7 @@ namespace Emergency_Ambulance_Dispatch_System.Core_Models
             Patient = patient;
             Status = EmergencyStatus.Created;
             Priority = priority;
+
             
            
             
