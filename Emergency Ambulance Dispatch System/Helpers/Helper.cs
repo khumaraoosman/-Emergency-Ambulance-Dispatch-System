@@ -11,11 +11,15 @@ namespace Emergency_Ambulance_Dispatch_System.Helpers
         private static int _caseCounter = 1001;
         public static bool CheckFullName(string fullName) 
         {
-            return !string.IsNullOrWhiteSpace(fullName);
+           if (string.IsNullOrWhiteSpace(fullName)) 
+           {
+                return false;
+           }
+            return true;
         }
         public static bool CheckPhoneNumber(string phoneNumber) 
         {
-            if (!string.IsNullOrWhiteSpace(phoneNumber)) 
+            if (string.IsNullOrWhiteSpace(phoneNumber)) 
             {
                 return false;
             }
