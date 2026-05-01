@@ -16,11 +16,11 @@ namespace Emergency_Ambulance_Dispatch_System.Core_Models
 
         public Ambulance(string plateNumber, string driverName, bool isavailable)
         {
-            if (!string.IsNullOrWhiteSpace(plateNumber)) 
+            if (string.IsNullOrWhiteSpace(plateNumber)) 
             {
                 throw new Exception("PlateNumber sehvdir");
             }
-            if (!string.IsNullOrWhiteSpace(driverName)) 
+            if (string.IsNullOrWhiteSpace(driverName)) 
             {
                 throw new Exception("DriverName sehvdir");
             }

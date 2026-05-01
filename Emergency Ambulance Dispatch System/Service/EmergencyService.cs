@@ -21,9 +21,16 @@ namespace Emergency_Ambulance_Dispatch_System.Service
         }
         public void AssignAmbulance(string caseNo)
         {
-            var ambulance = GetAvailableAmbulances().First();
-            if (ambulance != null)
+            if (string.IsNullOrEmpty(caseNo))
             {
+                throw new ArgumentException("Case number cannot be null or empty.", nameof(caseNo));
+            }
+            var ambulance = GetAvailableAmbulances().FirstOrDefault();
+            if (ambulance == null)
+            {
+                Console.WriteLine("Hal-hazirda movcud ambulans yoxdur");
+                return;
+            }
                 var emergencyCase = cases.FirstOrDefault(x => x.CaseNo == caseNo);
                 if (emergencyCase != null)
                 {
@@ -33,10 +40,17 @@ namespace Emergency_Ambulance_Dispatch_System.Service
                     Console.WriteLine(" Ambulans teyin olundu");
                     ambulance.IsAvailable = false;
                 }
-            }
+                else
+                {
+                    Console.WriteLine("Case tapilmadi");
+                }
         }
         public void StartDispatch(string caseNo)
         {
+            if (string.IsNullOrEmpty(caseNo))
+            {
+                throw new ArgumentException("Case number cannot be null or empty.", nameof(caseNo));
+            }
             var emergencyCase = cases.FirstOrDefault(x => x.CaseNo == caseNo);
             if (emergencyCase != null)
             {
@@ -50,9 +64,14 @@ namespace Emergency_Ambulance_Dispatch_System.Service
                     Console.WriteLine("Ambulans teyin olunmayib");
                 }
             }
+                
         }
         public void CompleteCase(string caseNo)
         {
+            if (string.IsNullOrEmpty(caseNo))
+            {
+                throw new ArgumentException("Case number cannot be null or empty.", nameof(caseNo));
+            }
             var emergencyCase = cases.FirstOrDefault(x => x.CaseNo == caseNo);
             if (emergencyCase != null)
             {
@@ -61,6 +80,10 @@ namespace Emergency_Ambulance_Dispatch_System.Service
                 {
                     emergencyCase.AssignedAmbulance.IsAvailable = true;
                     Console.WriteLine("mission completed");
+                }
+                else
+                {
+                    Console.WriteLine("teyin olunmus ambulans tapilmadi");
                 }
             }
         }
@@ -77,9 +100,9 @@ namespace Emergency_Ambulance_Dispatch_System.Service
         {
             return cases;
         }
-        public List<EmergencyCase> GetCasesByStatus(string status)
+        public List<EmergencyCase> GetCasesByStatus(EmergencyStatus status)
         {
-            return cases.FindAll(x => x.Status.ToString() == status);
+          return cases.FindAll(x => x.Status == status);
         }
         public List<EmergencyCase> GetHighPriorityCases()
         {
