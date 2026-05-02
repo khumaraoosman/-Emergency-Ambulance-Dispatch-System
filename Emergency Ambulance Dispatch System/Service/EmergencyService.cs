@@ -19,6 +19,11 @@ namespace Emergency_Ambulance_Dispatch_System.Service
             EmergencyCase newCase = new EmergencyCase(patient, priority);
             cases.Add(newCase);
         }
+        public void AddAmbulance(string plateNumber, string driverName)
+        {
+            Ambulance ambu = new Ambulance(plateNumber, driverName, true);
+            ambulance.Add(ambu);
+        }
         public void AssignAmbulance(string caseNo)
         {
             if (string.IsNullOrEmpty(caseNo))
@@ -114,8 +119,8 @@ namespace Emergency_Ambulance_Dispatch_System.Service
                 Console.WriteLine("Yuksek prioritetli case tapilmadi");
             }
             return data;
-
         }
+       
         public List<Ambulance> GetAvailableAmbulances()
         {
             var data = ambulance.FindAll(x => x.IsAvailable);

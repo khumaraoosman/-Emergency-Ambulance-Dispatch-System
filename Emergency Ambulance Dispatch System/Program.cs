@@ -15,7 +15,9 @@ namespace Emergency_Ambulance_Dispatch_System
             string phoneNumber;
             string fullName;
             string location;
-           
+            string plateNumber;
+            string driverName;
+
             EmergencyService service = new EmergencyService();
             do 
             {
@@ -75,7 +77,6 @@ namespace Emergency_Ambulance_Dispatch_System
                         }
                         catch (Exception)
                         {
-
                             goto caseNo;
                         }
                         break;
@@ -105,7 +106,6 @@ namespace Emergency_Ambulance_Dispatch_System
                         }
                         catch (Exception)
                         {
-
                             goto caseNo2;
                         }
                         break;
@@ -120,7 +120,6 @@ namespace Emergency_Ambulance_Dispatch_System
                         }
                         catch (Exception)
                         {
-
                             goto caseNo3;
                         }
                         break;
@@ -155,7 +154,22 @@ namespace Emergency_Ambulance_Dispatch_System
                     case "10":
                       service.SystemInfo();
                         break;
-                     case "0":
+                    case "11":
+                    ambulance:
+                        try
+                        {
+                            Console.WriteLine("surucu adini daxil edin");
+                            driverName = Console.ReadLine()!;
+                            Console.WriteLine("plateNumber daxil edin");
+                            plateNumber = Console.ReadLine()!;
+                            service.AddAmbulance(plateNumber, driverName);
+                        }
+                        catch (Exception)
+                        {
+                            goto ambulance;
+                        }
+                        break;
+                    case "0":
                         IsExit = true;
                         break;
                     default:
