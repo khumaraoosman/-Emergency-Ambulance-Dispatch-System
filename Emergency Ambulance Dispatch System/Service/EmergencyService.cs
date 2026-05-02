@@ -99,16 +99,31 @@ namespace Emergency_Ambulance_Dispatch_System.Service
         }
         public List<EmergencyCase> GetCasesByStatus(EmergencyStatus status)
         {
-          return cases.FindAll(x => x.Status == status);
+          var data =cases.FindAll(x => x.Status == status);
+            if (data.Count == 0)
+            {
+                Console.WriteLine("Bu statusa uygun case tapilmadi");
+            }
+            return data;
         }
         public List<EmergencyCase> GetHighPriorityCases()
         {
-            return cases.FindAll(x => x.Priority == Priority.High);
+            var data = cases.FindAll(x => x.Priority == Priority.High);
+            if (data.Count == 0)
+            {
+                Console.WriteLine("Yuksek prioritetli case tapilmadi");
+            }
+            return data;
 
         }
         public List<Ambulance> GetAvailableAmbulances()
         {
-            return ambulance.FindAll(x => x.IsAvailable);
+            var data = ambulance.FindAll(x => x.IsAvailable);
+            if (data.Count == 0)
+            {
+                Console.WriteLine("Hal-hazirda movcud ambulans yoxdur");
+            }
+            return data;
         }
         public void SystemInfo()
         {
