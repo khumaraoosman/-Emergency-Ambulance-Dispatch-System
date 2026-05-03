@@ -120,6 +120,7 @@ namespace Emergency_Ambulance_Dispatch_System.Service
             }
             return data;
         }
+        public List<EmergencyCase> GetCases
        
         public List<Ambulance> GetAvailableAmbulances()
         {
